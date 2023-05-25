@@ -1,0 +1,65 @@
+unit Controller.Auth;
+
+interface
+
+procedure RegistrarRotas;
+
+implementation
+
+uses
+  Horse,Service.Auth,System.JSON,System.Generics.Collections, Jose.Core.JWT, //criar token
+  Jose.Core.Builder, // assinar token e tudo mais
+  System.SysUtils,  Horse.Jwt ,system.DateUtils;
+
+const
+  CHAVE : string = 'curso-rest-horse';
+
+function getToken(const idUsuario : string; const expiration : TDateTime) : string;
+begin
+  var jwt := TJWT.Create;
+  try
+    jwt.Claims.IssuedAt := Now;
+    jwt.Claims.Expiration := expiration;
+    jwt.Claims.Subject := idUsuario;
+    Result := TJOSE.SHA256CompactToken('curso-rest-horse',jwt);
+  finally
+    jwt.Free;
+  end;
+end;
+  
+procedure efetuarLogin(Req : THorseRequest; Res : THorseResponse; Next : TProc);
+var
+  usuario,senha : string;
+begin
+  var Conteudo := Req.Body<TJsonObject>;
+  if not Conteudo.tryGetValue<string>('username',usuario) then
+    raise EHorseException.Create().Error('username not defined'); // instalar o handleException, devolve a exception em Json...
+  if not Conteudo.TryGetValue<string>('password',senha) then
+    raise EHorseException.Create().Error('password not defined');
+  var service := TServiceAuth.Create(nil);
+  try
+    if not service.PermitirAcesso(usuario,senha) then
+      raise EHorseException.Create().Error('Usuario nao autorizado');
+    var token := TJSONObject.Create;
+    token.AddPair('access',getToken(service.queryLoginid.AsString,IncHour(Now) ));
+    token.AddPair('refresh',getToken(service.queryLoginid.AsString, IncMonth(Now) ));
+    res.Send(token);
+  finally
+    service.Free;
+  end;
+end;
+
+procedure renovarToken(Req : THorseRequest; Res : THorseResponse; Next : TProc);
+begin
+  var sub := req.Session<TJSONObject>.GetValue('sub');
+  var token := getToken(sub,IncHour(Now));
+
+end;
+
+procedure RegistrarRotas;
+begin
+  THorse.Post('/login',efetuarLogin);
+  THorse.AddCallback(HorseJWT(CHAVE)).Get('/refresh' ,renovarToken);
+end;
+
+end.

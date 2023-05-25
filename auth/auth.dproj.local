@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/05/25 09:14:30.000.293,C:\delphi\auth\auth.dproj=C:\Users\dev-joão\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/05/25 09:18:31.000.588,=C:\delphi\auth\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 09:18:42.000.390,C:\delphi\auth\src\controllers\Controller.Auth.pas=C:\delphi\auth\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 09:21:26.000.721,=C:\delphi\auth\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 09:21:59.000.544,C:\delphi\auth\src\providers\Providers.Connection.dfm=C:\delphi\auth\Unit1.dfm</Transaction>
+    <Transaction>2023/05/25 09:21:59.000.544,C:\delphi\auth\src\providers\Providers.Connection.pas=C:\delphi\auth\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 09:24:40.000.601,=C:\delphi\auth\Unit2.pas</Transaction>
+    <Transaction>2023/05/25 09:25:15.000.694,=C:\delphi\auth\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 09:25:36.000.591,C:\delphi\auth\src\services\Service.Auth.pas=C:\delphi\auth\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 09:25:36.000.591,C:\delphi\auth\src\services\Service.Auth.dfm=C:\delphi\auth\Unit1.dfm</Transaction>
+    <Transaction>2023/05/25 10:08:15.000.918,=C:\delphi\auth\src\services\Service.Auth.pas</Transaction>
+  </Transactions>
+</BorlandProject>

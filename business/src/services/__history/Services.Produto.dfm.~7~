@@ -1,0 +1,59 @@
+inherited ServiceProduto: TServiceProduto
+  inherited UniConnection1: TUniConnection
+    EncryptedPassword = '8FFF90FF8CFF8BFF98FF8DFF9AFF8CFF'
+  end
+  inherited qryPesquisa: TUniQuery
+    SQL.Strings = (
+      'SELECT * FROM PRODUTO'
+      'WHERE 1=1')
+    object qryPesquisaid: TLargeintField
+      FieldName = 'id'
+    end
+    object qryPesquisanome: TStringField
+      FieldName = 'nome'
+      Required = True
+      Size = 60
+    end
+    object qryPesquisavalor: TFloatField
+      FieldName = 'valor'
+      Required = True
+    end
+    object qryPesquisastatus: TSmallintField
+      FieldName = 'status'
+    end
+    object qryPesquisaestoque: TFloatField
+      FieldName = 'estoque'
+      Required = True
+    end
+  end
+  inherited qryRecordCount: TUniQuery
+    SQL.Strings = (
+      'SELECT COUNT(*) FROM PRODUTO'
+      'WHERE 1=1')
+  end
+  inherited qryCadastro: TUniQuery
+    SQL.Strings = (
+      'SELECT * FROM PRODUTO')
+    object qryCadastroid: TLargeintField
+      AutoGenerateValue = arAutoInc
+      FieldName = 'id'
+      ReadOnly = True
+    end
+    object qryCadastronome: TStringField
+      FieldName = 'nome'
+      Required = True
+      Size = 60
+    end
+    object qryCadastrovalor: TFloatField
+      FieldName = 'valor'
+      Required = True
+    end
+    object qryCadastrostatus: TSmallintField
+      FieldName = 'status'
+    end
+    object qryCadastroestoque: TFloatField
+      FieldName = 'estoque'
+      Required = True
+    end
+  end
+end

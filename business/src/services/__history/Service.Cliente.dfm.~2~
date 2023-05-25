@@ -1,0 +1,16 @@
+inherited ProvidersCadastro1: TProvidersCadastro1
+  inherited queryPesquisa: TFDQuery
+    SQL.Strings = (
+      'SELECT * FROM CLIENTE'
+      'WHERE 1=1')
+  end
+  inherited queryRecordCount: TFDQuery
+    SQL.Strings = (
+      'SELECT COUNT(*) FROM CLIENTE'
+      'WHERE 1=1')
+  end
+  inherited queryCadastro: TFDQuery
+    SQL.Strings = (
+      'SELECT * FROM CLIENTE')
+  end
+end

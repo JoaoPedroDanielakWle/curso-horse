@@ -1,0 +1,73 @@
+unit Services.Produto;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Providers.Cadastro, Data.DB, MemDS, DBAccess,
+  Uni, UniProvider, PostgreSQLUniProvider, System.Generics.Collections, system.Json,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.Phys, FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.ConsoleUI.Wait,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TServiceProduto = class(TProvidersCadastro)
+    queryPesquisaid: TLargeintField;
+    queryPesquisanome: TWideStringField;
+    queryPesquisavalor: TFMTBCDField;
+    queryPesquisastatus: TSmallintField;
+    queryPesquisaestoque: TFMTBCDField;
+    queryCadastroid: TLargeintField;
+    queryCadastronome: TWideStringField;
+    queryCadastrovalor: TFMTBCDField;
+    queryCadastrostatus: TSmallintField;
+    queryCadastroestoque: TFMTBCDField;
+  private
+    { Private declarations }
+  public
+    function ListAll(const AParams : TDictionary<string,string>): TFDQuery; override;
+  end;
+
+var
+  ServiceProduto: TServiceProduto;
+
+implementation
+
+{%CLASSGROUP 'System.Classes.TPersistent'}
+
+{$R *.dfm}
+
+{ TServiceProduto }
+
+function TServiceProduto.ListAll(
+  const AParams: TDictionary<string, string>): TFDQuery;
+begin
+
+  if AParams.ContainsKey('id') then
+  begin
+    queryPesquisa.SQL.Add('AND id = :ID');
+    queryPesquisa.ParamByName('id').AsInteger := AParams.Items['id'].ToInt64;
+    queryRecordCount.Sql.Add('AND id = :ID');
+    queryRecordCount.ParamByName('id').AsInteger := AParams.Items['id'].ToInteger();
+  end;
+  if AParams.ContainsKey('nome') then
+  begin
+    queryPesquisa.SQL.Add('AND lower(nome) like :nome');
+    queryPesquisa.ParamByName('nome').AsString := '%'+AParams.Items['nome'].ToLower+'%';
+    queryRecordCount.Sql.Add('AND lower(nome) like :nome');
+    queryRecordCount.ParamByName('nome').AsString := '%'+AParams.Items['nome'].ToLower+'%';
+  end;
+  if AParams.ContainsKey('status') then
+  begin
+    queryPesquisa.SQL.Add('AND status = :status');
+    queryPesquisa.ParamByName('status').AsInteger := AParams.Items['status'].ToInteger();
+    queryRecordCount.Sql.Add('AND status = :status');
+    queryRecordCount.ParamByName('status').AsInteger := AParams.Items['status'].ToInteger();
+  end;
+
+  inherited ListAll(AParams)
+
+end;
+
+end.

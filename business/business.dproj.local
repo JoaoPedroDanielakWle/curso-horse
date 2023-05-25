@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2023/05/23 09:25:54.000.541,C:\delphi\business\business.dproj=C:\Users\dev-joão\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2023/05/23 09:26:43.000.033,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/23 09:28:16.000.264,C:\delphi\business\src\providers\Providers.Connection.pas=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/23 09:28:16.000.264,C:\delphi\business\src\providers\Providers.Connection.dfm=C:\delphi\business\Unit1.dfm</Transaction>
+    <Transaction>2023/05/23 10:55:29.000.081,=C:\delphi\business\Unit2.pas</Transaction>
+    <Transaction>2023/05/23 10:56:17.000.898,C:\delphi\business\Unit2.pas=C:\delphi\business\src\providers\Providers.Cadastro.pas</Transaction>
+    <Transaction>2023/05/23 10:56:17.000.898,C:\delphi\business\Unit2.dfm=C:\delphi\business\src\providers\Providers.Cadastro.dfm</Transaction>
+    <Transaction>2023/05/23 13:56:28.000.204,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/23 13:56:48.000.145,C:\delphi\business\Unit1.dfm=C:\delphi\business\src\services\Services.Produto.dfm</Transaction>
+    <Transaction>2023/05/23 13:56:48.000.145,C:\delphi\business\Unit1.pas=C:\delphi\business\src\services\Services.Produto.pas</Transaction>
+    <Transaction>2023/05/23 14:10:47.000.981,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/23 14:11:02.000.544,C:\delphi\business\Unit1.pas=C:\delphi\business\src\controllers\Controllers.Produto.pas</Transaction>
+    <Transaction>2023/05/24 11:40:27.000.781,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 11:40:39.000.474,C:\delphi\business\src\services\Service.Cliente.dfm=C:\delphi\business\Unit1.dfm</Transaction>
+    <Transaction>2023/05/24 11:40:39.000.474,C:\delphi\business\src\services\Service.Cliente.pas=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 11:42:18.000.191,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 11:42:32.000.687,C:\delphi\business\src\controllers\Controllers.Cliente.pas=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 14:18:44.000.238,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 14:19:07.000.739,C:\delphi\business\src\services\Service.Pedido.dfm=C:\delphi\business\Unit1.dfm</Transaction>
+    <Transaction>2023/05/24 14:19:07.000.739,C:\delphi\business\src\services\Service.Pedido.pas=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 14:30:40.000.535,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 14:30:57.000.965,C:\delphi\business\src\controllers\Controllers.Pedido.pas=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 15:47:14.000.984,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 15:47:26.000.487,C:\delphi\business\src\services\Service.Usuario.pas=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 15:47:26.000.487,C:\delphi\business\src\services\Service.Usuario.dfm=C:\delphi\business\Unit1.dfm</Transaction>
+    <Transaction>2023/05/24 15:53:27.000.348,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/24 15:53:44.000.318,C:\delphi\business\src\controllers\Controllers.Usuario.pas=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 11:26:01.803,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 11:27:21.111,C:\delphi\business\src\services\Service.PedidoItens.pas=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 11:27:21.111,C:\delphi\business\src\services\Service.PedidoItens.dfm=C:\delphi\business\Unit1.dfm</Transaction>
+    <Transaction>2023/05/25 13:30:57.567,=C:\delphi\business\Unit1.pas</Transaction>
+    <Transaction>2023/05/25 13:31:07.865,C:\delphi\business\src\controllers\Controllers.Pedido.Itens.pas=C:\delphi\business\Unit1.pas</Transaction>
+  </Transactions>
+</BorlandProject>

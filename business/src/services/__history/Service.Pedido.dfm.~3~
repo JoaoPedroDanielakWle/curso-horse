@@ -1,0 +1,9 @@
+inherited ServicePedido: TServicePedido
+  inherited queryPesquisa: TFDQuery
+    SQL.Strings = (
+      'SELECT P.*, C.NOME AS nome_cliente'
+      'FROM PEDIDO P '
+      'INNER JOIN CLIENTE C'
+      'ON C.ID = P.ID_CLIENTE')
+  end
+end

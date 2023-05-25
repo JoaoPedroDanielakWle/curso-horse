@@ -1,0 +1,15 @@
+object ProvidersConnection: TProvidersConnection
+  Height = 480
+  Width = 640
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Database=curso'
+      'User_Name=postgres'
+      'Password=postgres'
+      'Server=localhost'
+      'Pooled=True'
+      'DriverID=PG')
+    Left = 192
+    Top = 120
+  end
+end

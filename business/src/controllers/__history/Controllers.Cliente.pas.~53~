@@ -1,0 +1,88 @@
+unit Controllers.Cliente;
+
+interface
+
+procedure RegistrarRotas;
+
+implementation
+
+uses
+  Horse, Service.Cliente, System.JSON, DataSet.Serialize;
+
+
+procedure ListarClientes(Req : THorseRequest; Res : THorseResponse; Next : TProc);
+begin
+  var LService := TServiceCliente.Create;
+  try
+    var LJson := TJsonObject.Create;
+    LJson.AddPair('nome',LService.ListAll(Req.Query.Dictionary).toJsonArray());
+    LJson.AddPair('records',LService.GetRecordCount);
+    Res.Send(LJson);
+  finally
+    LService.Free;
+  end;
+end;
+
+procedure ObterCliente(Req : THorseRequest; Res : THorseResponse; Next : TProc);
+begin
+  var LService := TServiceCliente.Create;
+  try
+    var idCliente := Req.Params['id'];
+    if LService.GetById(idCliente).IsEmpty then
+      raise EHorseException.Create().Status(THTTPStatus.NotFound);
+    Res.Send<TJsonObject>(LService.queryCadastro.ToJSONObject()).Status(200);
+  finally
+    LService.free;
+  end;
+end;
+
+procedure CadastrarCliente(Req : THorseRequest; Res : THorseResponse; Next : TProc);
+begin
+  var Service := TServiceCliente.Create;
+  try
+    if Service.Append(Req.Body<TJsonObject>) then
+      Res.Send(service.queryCadastro.ToJSONObject()).Status(201)
+    else
+      Res.Send('').Status(400);
+  finally
+    Service.Free;
+  end;
+end;
+
+procedure AlterarCliente(Req : THorseRequest; Res : THorseResponse; Next : TProc);
+begin
+  var Service := TServiceCliente.Create;
+  try
+    if (not Service.GetById(Req.Params['id']).IsEmpty) and (Service.Update(Req.Body<TJSONObject>))  then
+      Res.Send('').Status(THTTPStatus.NoContent)
+    else
+      raise EHorseException.Create();
+  finally
+    Service.Free;
+  end;
+end;
+
+procedure DeletarCliente(Req : THorseRequest; Res : THorseResponse; Next : TProc);
+begin
+  var service := TServiceCliente.Create;
+  try
+    if (not Service.GetById(Req.Params['id']).IsEmpty) and (not Service.Delete()) then
+      raise EHorseException.Create().Status(THTTPStatus.NotFound)
+    else
+      res.Send('').Status(THTTPStatus.NoContent);
+  finally
+
+  end;
+end;
+
+
+procedure RegistrarRotas;
+begin
+    THorse.Get('/clientes',ListarClientes);
+    THorse.Get('/clientes/:id',ObterCliente);
+    THorse.Post('/clientes',CadastrarCliente);
+    THorse.Put('/clientes/:id',AlterarCliente);
+    THorse.Delete('/clientes/:id',DeletarCliente);
+end;
+
+end.

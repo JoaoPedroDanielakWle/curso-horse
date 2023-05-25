@@ -1,0 +1,20 @@
+object ProvidersCadastro: TProvidersCadastro
+  Height = 480
+  Width = 640
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Pooled=True'
+      'Database=curso'
+      'User_Name=postgres'
+      'Password=postgres'
+      'Server=localhost'
+      'Port=5433'
+      'DriverID=PG')
+    Left = 280
+    Top = 112
+  end
+  object FDPhysPgDriverLink1: TFDPhysPgDriverLink
+    Left = 168
+    Top = 200
+  end
+end

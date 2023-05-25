@@ -1,0 +1,16 @@
+object ProvidersCadastro: TProvidersCadastro
+  Height = 480
+  Width = 640
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'Port=5433'
+      'ConnectionDef=Curso_Pooled')
+    Left = 280
+    Top = 112
+  end
+  object FDPhysPgDriverLink1: TFDPhysPgDriverLink
+    VendorHome = 'C:\delphi\business\lib'
+    Left = 168
+    Top = 200
+  end
+end

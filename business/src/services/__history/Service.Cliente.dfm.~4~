@@ -1,0 +1,19 @@
+inherited ServiceCliente: TServiceCliente
+  inherited queryPesquisa: TFDQuery
+    CachedUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM CLIENTE'
+      'WHERE 1=1')
+  end
+  inherited queryRecordCount: TFDQuery
+    CachedUpdates = True
+    SQL.Strings = (
+      'SELECT COUNT(*) FROM CLIENTE'
+      'WHERE 1=1')
+  end
+  inherited queryCadastro: TFDQuery
+    CachedUpdates = True
+    SQL.Strings = (
+      'SELECT * FROM CLIENTE')
+  end
+end

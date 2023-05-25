@@ -1,0 +1,12 @@
+inherited ServiceProduto: TServiceProduto
+  inherited queryPesquisa: TFDQuery
+    SQL.Strings = (
+      'SELECT * FROM PRODUTO'
+      'WHERE 1=1')
+  end
+  inherited queryRecordCount: TFDQuery
+    SQL.Strings = (
+      'SELECT COUNT(*) FROM PRODUTO'
+      'WHERE 1=1')
+  end
+end

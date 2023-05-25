@@ -1,0 +1,20 @@
+program auth;
+
+{$APPTYPE CONSOLE}
+
+{$R *.res}
+
+uses
+  Horse,
+  Horse.Jhonson,
+  System.JSON,
+  Controller.Auth in 'src\controllers\Controller.Auth.pas',
+  Providers.Connection in 'src\providers\Providers.Connection.pas' {DataModule1: TDataModule};
+
+begin
+  THorse.Use(Jhonson());
+
+
+
+  THorse.Listen(9000);
+end.

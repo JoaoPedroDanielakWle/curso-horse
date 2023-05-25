@@ -1,0 +1,45 @@
+unit Service.Auth;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Providers.Connection, FireDAC.Phys.PGDef,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf,
+  FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async,
+  FireDAC.Phys, FireDAC.Phys.PG, FireDAC.ConsoleUI.Wait, Data.DB,
+  FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, FireDAC.Comp.DataSet, BCrypt;
+
+type
+  TServiceAuth = class(TProvidersConnection)
+    queryLogin: TFDQuery;
+    queryLoginid: TLargeintField;
+    queryLoginsenha: TWideStringField;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function PermitirAcesso(const usuario,senha : string) : boolean;
+  end;
+
+var
+  ServiceAuth: TServiceAuth;
+
+implementation
+
+{%CLASSGROUP 'System.Classes.TPersistent'}
+
+{$R *.dfm}
+
+{ TServiceAuth }
+
+function TServiceAuth.PermitirAcesso(const usuario, senha: string): boolean;
+begin
+  queryLogin.ParamByName('login').AsString := usuario;
+  queryLogin.Open();
+  if queryLogin.IsEmpty then
+    Exit(false);
+  Result := TBCrypt.CompareHash(senha,queryLoginsenha);
+end;
+
+end.

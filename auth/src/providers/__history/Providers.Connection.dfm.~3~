@@ -1,0 +1,16 @@
+object DataModule1: TDataModule1
+  Height = 480
+  Width = 640
+  object FDPhysPgDriverLink1: TFDPhysPgDriverLink
+    VendorHome = 'C:\delphi\auth\lib'
+    Left = 288
+    Top = 120
+  end
+  object FDConnection1: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=Curso_Pooled')
+    Connected = True
+    Left = 432
+    Top = 128
+  end
+end

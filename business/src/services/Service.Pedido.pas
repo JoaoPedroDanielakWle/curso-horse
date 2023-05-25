@@ -1,0 +1,49 @@
+unit Service.Pedido;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, Providers.Cadastro, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf,
+  FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys,
+  FireDAC.Phys.PG, FireDAC.Phys.PGDef, FireDAC.ConsoleUI.Wait,
+  FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.VCLUI.Wait;
+
+type
+  TServicePedido = class(TProvidersCadastro)
+    queryPesquisaid: TLargeintField;
+    queryPesquisaid_cliente: TLargeintField;
+    queryPesquisaid_usuario: TLargeintField;
+    queryPesquisadata: TSQLTimeStampField;
+    queryPesquisanome_cliente: TWideStringField;
+    queryCadastroid: TLargeintField;
+    queryCadastroid_cliente: TLargeintField;
+    queryCadastroid_usuario: TLargeintField;
+    queryCadastrodata: TSQLTimeStampField;
+    queryCadastronome_cliente: TWideStringField;
+  private
+    function GetById(const AId: string): TFDQuery;override;
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  ServicePedido: TServicePedido;
+
+implementation
+
+function TServicePedido.GetById(const AId: string): TFDQuery;
+begin
+  queryCadastro.SQL.Add('WHERE P.ID = :ID');
+  queryCadastro.ParamByName('id').AsLargeInt := AId.ToInt64;
+  queryCadastro.Open;
+  Result := queryCadastro;
+end;
+
+{%CLASSGROUP 'System.Classes.TPersistent'}
+
+{$R *.dfm}
+
+end.
